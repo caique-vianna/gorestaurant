@@ -1,38 +1,50 @@
-import { useEffect, useState } from "react";
-import { Header } from "../../components/Header";
-import { ModalEditFood } from "../../components/ModalEditFood"
-import api from "../../services/api";
-import { ModalAddFood } from "../../components/ModalAddFood"
-import { FoodsContainer } from "./styles";
-import { Food } from "../../components/Food";
-
+import { useEffect, useState } from "react"
+import { Header } from "../../components/Header"
+import { FoodsContainer } from "./styles"
+import api from "../../services/api"
+import { Food } from "../../components/Food"
+import { ModalAddFood } from "../../components/ModalAddFood";
+import { ModalEditFood } from "../../components/ModalEditFood";
 
 export const Dashboard = () => {
-    const [foods, setFoods] = useState("")
+    const[foods, setFoods] = useState('')
 
+    const [modalOpen, setModalOpen] = useState(false);
 
     const getFoods = async () => {
         const response = await api.get('foods')
-       console.log(response.data)
         setFoods(response.data)
+    }
+
+    function toggleModal() {
+        setModalOpen(!modalOpen);
     }
 
     useEffect(() => {
         getFoods()
     }, [])
 
+    const handleAddFood = () => {};
 
-    return (
+    return(
         <>
-            <Header />
-            <ModalAddFood />
-            <ModalEditFood />
+        <Header openModal={toggleModal} />
 
-<FoodsContainer>
-{foods && foods.map((food) => <Food food={food} />)}
-</FoodsContainer>
+        <ModalAddFood 
+        isOpen={modalOpen}
+        setIsOpen={toggleModal}
+        handleAddFood={handleAddFood}
+        />
 
+        <ModalEditFood />
 
+        <FoodsContainer>
+            {
+             foods && 
+              foods.map(food => (
+                <Food food={food}/>
+             ))}
+        </FoodsContainer>
         </>
     )
 }

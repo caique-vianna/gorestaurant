@@ -1,20 +1,20 @@
-import React, { userCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react"
 
 import { Container } from "./styles";
 
-export const Input = ({ ...rest}) => {
-    const inputRef = useRef < HTMLInputElement > null;
+export const Input = ({ ...rest }) => {
+   const inputRef = useRef(null);
 
-    const [isFocused, setIsFocused] = useState(false);
-    const [isFilled, setFilled] = useState(false);
+   const [isFocused, setIsFocused] = useState(false);
+   const [isFilled, setIsFilled] = useState(false)
 
-    const handleInputFocus = userCallback(() =>  {
+   const handleInputFocus = useCallback(() => {
+       setIsFocused(true);
+   }, []);
 
-    }, []);
-
-    return  (
-        <Container isFilled={isFilled} isFocused={isFocused}>
-            <input onFocus={handleInputFocus} ref={inputRef} {...rest} />
-        </Container>
-    )
-}
+   return (
+       <Container isFilled={isFilled} isFocused={isFocused}>
+          <input onFocus={handleInputFocus} ref={inputRef} {...rest} />
+       </Container>
+   );
+};
