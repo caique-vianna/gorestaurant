@@ -1,7 +1,7 @@
 {
   "foods": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Ao molho",
       "description": "Macarrão ao molho branco, fughi e cheiro verde das montanhas.",
       "price": "19.90",
@@ -9,7 +9,7 @@
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food1.png"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Veggie",
       "description": "Macarrão com pimentão, ervilha e ervas finas colhidas no himalaia.",
       "price": "21.90",
@@ -17,12 +17,26 @@
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food2.png"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "A la Camarón",
       "description": "Macarrão com vegetais de primeira linha e camarão dos 7 mares.",
       "price": "25.90",
       "available": true,
       "image": "https://storage.googleapis.com/golden-wind/bootcamp-gostack/desafio-food/food3.png"
+    },
+    {
+      "id": "ef3d",
+      "image": "https://p2.trrsf.com/image/fget/cf/1200/900/middle/images.terra.com/2023/05/18/arroz-doce-1jeoaro4itmjn.jpg",
+      "name": "arroz doce",
+      "price": "100:00",
+      "description": "arroz com doce"
+    },
+    {
+      "id": "f526",
+      "image": "https://p2.trrsf.com/image/fget/cf/1200/900/middle/images.terra.com/2023/05/18/arroz-doce-1jeoaro4itmjn.jpg",
+      "name": "arroz doce 2",
+      "price": "120:00",
+      "description": "arroz com doce  2"
     }
   ]
 }

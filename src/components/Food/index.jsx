@@ -1,8 +1,22 @@
+import { useState } from "react";
 import { Container } from "./style"
+import { FiEdit3, FiTrash } from "react-icons/fi";
 
- export const Food = ({ food }) => {
+ export const Food = ({ food }) => { 
+const [ isAvailable, setIsAvailable] = useState(food.available)
+
+function toggleAvailable() {
+    console.log(isAvailable)
+    setIsAvailable(!isAvailable);
+}
+
+function setEditingFood() {
+    
+    handleEditFood(food);
+}
+
     return(
-        <Container>
+        <Container available={isAvailable}>
             <header>
                 <img src={food.image} alt={food.name} />
             </header>
@@ -21,27 +35,31 @@ import { Container } from "./style"
                type="button"
                className="icon"
                onClick={() => setEditingFood()}
-               data-testid={'edit-food-${food.id'}
+               data-testid={`edit-food-${food.id}`}
                >
+                <FiEdit3 size={20} />
                </button> 
 
                <button
                type="button"
                className="icon"
                onClick={() => handleDelete(food.id)}
-               data-testid={'remove-food-${food.id}'}
+               data-testid={`remove-food-${food.id}`}
                >
+                <FiTrash size={20} />
                </button>
             </div>
 
             <div className="availability-container">
+                <p>{isAvailable ? "Dispovinel" : "Indiponivel"}</p>
 
-            <label htmlFor={'available-switch-${food.id}'} className="switch">
+            <label htmlFor={`available-switch-${food.id}`} className="switch">
                 <input 
-                id={'available-switch-${food.id}'}
+                id={`available-switch-${food.id}`}
                 type="checkbox"
-
-                data-testid={'change-status-food-${food.id}'}
+                data-testid={`change-status-food-${food.id}`}
+                checked={isAvailable}
+                onChange={toggleAvailable}
                 />
 
             <span className="slider" />

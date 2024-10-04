@@ -3,15 +3,40 @@ import { Modal } from '../Modal'
 import { Form } from './style'
 
 import { Input } from '../Input';
+import  api  from '../../services/api';
+
+import { toast } from 'react-toastify';
 
 export const ModalAddFood = (props) => {
-    const handleSubmit = () => {};
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+
+
+      const data = {
+        image: formRef.current.image.value,
+        name: formRef.current.name.value,
+        price: formRef.current.price.value,
+        description: formRef.current.description.value,
+      };
+
+      if(data.image === '' || 
+        data.name === '' ||
+         data.price === '' || 
+         data.description === '') {
+        toast.error('Preencha todos os campos');
+        return;
+      }
+
+      await api.post('/foods', data);
+      
+      toast.success('Prato cadastrado com sucesso');
+     };
 
     const formRef = useRef(null);
 
    return (
     <Modal isOpen={props.isOpen} setIsOpen={props.setIsOpen}> 
-      <Form ref={formRef}>
+      <Form ref={formRef} onSubmit={handleSubmit}>
        <h1>Novo Prato</h1>
 
        <label>link da imagem do prato</label>

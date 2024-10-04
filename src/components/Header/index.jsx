@@ -1,25 +1,23 @@
-import { Container } from "./styles"
+import { Container } from "./styles";
+import { FaPlus } from "react-icons/fa";
 
 export const Header = ({ openModal }) => {
-    return(
-        <Container>
-            <header>
-                <nav>
-                    <div>
-                        <button
-                        type="button"
-                        onClick={() => {
-                        openModal();
-                        }}
-                        >
-                         <div className="text">Novo Prato</div>
-                         <div className="icon">
-                         Icon
-                         </div>
-                        </button>
-                    </div>
-                </nav>
-            </header>
-        </Container>
-    );
+  return (
+    <Container>
+      <header>
+        <nav>
+          <button
+            type="button"
+            onClick={() => {
+              openModal();
+            }}
+          >
+            <FaPlus />
+
+            <p> novo prato</p>
+          </button>
+        </nav>
+      </header>
+    </Container>
+  );
 };

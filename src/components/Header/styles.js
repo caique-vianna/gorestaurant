@@ -12,4 +12,18 @@ header{
     align-items: center;
     justify-content: space-between;
 }
+
+button {
+    width: 160px;
+    height: 40px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    background: #39b100;
+    border-radius:4px;
+    border: 0;
+    color: #fff;
+}
 `
